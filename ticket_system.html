@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Airplane Ticket Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <span class="topbar-logo">✈</span>
+        <span class="topbar-title">Air<span>Ticket</span> Manager</span>
+    </header>
+
+    <div id="home" class="screen active">
+        <div class="home-hero">
+            <h1>Airplane Ticket<br/>Management System</h1>
+        </div>
+        <div class="cards-grid">
+            <div class="nav-card card-book" onclick="showScreen('book')"><h3>Book Ticket</h3></div>
+            <div class="nav-card card-view" onclick="showScreen('view')"><h3>View Tickets</h3></div>
+            <div class="nav-card card-update" onclick="showScreen('update')"><h3>Update Ticket</h3></div>
+            <div class="nav-card card-cancel" onclick="showScreen('cancel')"><h3>Cancel Ticket</h3></div>
+        </div>
+    </div>
+
+    <div id="book" class="screen section-screen">
+        <button class="btn btn-ghost" onclick="goHome()">← Back</button>
+        <div class="section-box">
+            <div class="section-body">
+                <input type="date" id="bDate">
+                <select id="bClass"><option value="Economy">Economy</option><option value="Business">Business</option></select>
+                <input type="number" id="bFare" placeholder="Fare (₹)">
+                <button class="btn btn-blue btn-full" onclick="bookTicket()">Confirm Booking</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="view" class="screen section-screen">
+        <button class="btn btn-ghost" onclick="goHome()">← Back</button>
+        <div class="section-box" style="max-width:700px">
+            <div class="section-body">
+                <button class="btn btn-green" onclick="loadTickets()">Refresh List</button>
+                <div id="ticketTable" class="table-wrap"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="update" class="screen section-screen">
+        <button class="btn btn-ghost" onclick="goHome()">← Back</button>
+        <div class="section-box">
+            <div class="section-body">
+                <input type="number" id="uId" placeholder="Ticket ID">
+                <select id="uClass"><option value="Economy">Economy</option><option value="Business">Business</option></select>
+                <input type="number" id="uFare" placeholder="New Fare">
+                <button class="btn btn-amber btn-full" onclick="updateTicket()">Update</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cancel" class="screen section-screen">
+        <button class="btn btn-ghost" onclick="goHome()">← Back</button>
+        <div class="section-box">
+            <div class="section-body">
+                <input type="number" id="cId" placeholder="Ticket ID to Cancel">
+                <button class="btn btn-red btn-full" onclick="cancelTicket()">Cancel Ticket</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toasts"></div>
+    <script src="static/script.js"></script>
+</body>
+</html>
